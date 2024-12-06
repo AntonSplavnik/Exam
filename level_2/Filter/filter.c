@@ -1,5 +1,6 @@
 
 // strlen, malloc, realloc, memmove, memmem, write
+
 #define _GNU_SOURCE
 #include <stdlib.h>
 #include <unistd.h>

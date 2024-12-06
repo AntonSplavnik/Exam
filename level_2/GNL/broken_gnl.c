@@ -1,4 +1,6 @@
-#include "get_next_line.h"
+
+#include "gnl.h"
+
 char *ft_strchr(char *s, int c)
 {
     int i = 0;
@@ -84,4 +86,17 @@ char *get_next_line(int fd)
     else // add
         b[0] = '\0'; // add
     return ret;
+}
+
+int main(int argv, char **argc)
+{
+    char *line;
+    // int fd;
+
+    // fd = open(argv[1], O_RDWR);
+
+    line = get_next_line(0);
+
+    printf("line: %s", line);
+
 }
