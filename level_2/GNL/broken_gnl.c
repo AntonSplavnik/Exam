@@ -85,12 +85,12 @@ char *get_next_line(int fd)
     while (!tmp)
     {
         if (!str_append_str(&ret, b))
-            return NULL;
+            return (NULL);
         int read_ret = read(fd, b, BUFFER_SIZE);
         if (read_ret == -1)
         {
             free(ret);  // add
-            return NULL;
+            return (NULL);
         }
         b[read_ret] = 0;
         if (read_ret == 0)  // add
@@ -98,7 +98,7 @@ char *get_next_line(int fd)
             if (ret && *ret)
                 return (ret);
             free (ret);
-            return NULL;
+            return (NULL);
         }
     }
     tmp = ft_strchr(b, '\n');  // add
