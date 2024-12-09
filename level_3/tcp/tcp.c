@@ -1,4 +1,4 @@
-<stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 float compute_distance(float **dist_matrix, int *sol, int count)
@@ -17,7 +17,7 @@ float calculate_distance(float *p1, float *p2)
 {
 	float distance;
 	if (p1 == p2) return 0;
-	
+
 	distance = sqrtf((p1[0] - p2[0])*(p1[0] - p2[0]) + (p1[1] - p2[1])*(p1[1] - p2[1]));
 	return (distance);
 }
@@ -58,7 +58,7 @@ int	main(void)
 	float x, y;
 	int count = 0;
 	float **coords = NULL; // coordinates
-	
+
 	/* STEP 1:
 		Read coordinates and save in a 2-day float array
 		with size n by 2, n is the number of points
@@ -71,14 +71,14 @@ int	main(void)
 		coords[count][1] = y;
 		count++;
 	}
-	
+
 	/* STEP 2:
 		Create a distance matrix - a 2D float array of size n*n,
 		where dist_matrix[i][j] = distance between points i and j
 		i = 0 -> n - 1;
 		j = 0 -> n - 1;*/
 	float **dist_matrix = malloc(sizeof(float *) * count); // distance matrix
-	
+
 	for (int j = 0; j < count; j++)
 	{
 		dist_matrix[j] = malloc (sizeof(float) * count);
@@ -87,7 +87,7 @@ int	main(void)
 			dist_matrix[j][k] = calculate_distance(coords[j], coords[k]);
 		}
 	}
-	
+
 	/* STEP 3:
 		Create a solution array sol[count] and fill it from i = 0 to n - 1*/
 	int sol[count];
@@ -98,12 +98,12 @@ int	main(void)
 		Pass the distance matrix, the solution array
 		Start function call from start = 0 and end = count*/
 	float min_dist = solve_tsp(dist_matrix, sol, 0, count, INFINITY);
-	
+
 	/*STEP 5:
 		Print result and free mallocs*/
-	
+
 	// Print Result
 	printf("%.2f\n", min_dist);
-	
+
 	// NEED TO FREE coords + dist_matrix
 }

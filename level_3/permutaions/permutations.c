@@ -1,4 +1,4 @@
-// malloc puts 
+// malloc puts
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -6,7 +6,7 @@
 int ft_strlen(char *s)
 {
 	int i = 0;
-	
+
 	while (s[i])
 		i++;
 	return i;
@@ -59,17 +59,17 @@ int next_perm(char *s, int len)
 
 int main(int ac, char **av)
 {
-	if (ac != 2)
-		return 1;
+	if (ac != 2) return 1;
 	int len = ft_strlen(av[1]);
-	if (len == 0)
-		return 1;
+	if (len == 0) return 1;
+
 	char *buf = malloc(len + 1);
-	if (!buf)
-		return 1;
+	if (!buf) return 1;
+
 	for (int i = 0; i < len; i++)
 		buf[i] = av[1][i];
 	buf[len] = '\0';
+
 	bubble_sort(buf, len);
 	puts(buf);
 	while (next_perm(buf, len))
