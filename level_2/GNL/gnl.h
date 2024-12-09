@@ -1,5 +1,5 @@
-#ifndef GNL.H
-# define GNL.H
+#ifndef GNL_H
+# define GNL_H
 
 # include <stdio.h>
 # include <stdlib.h>

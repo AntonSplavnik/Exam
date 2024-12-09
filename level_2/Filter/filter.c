@@ -1,5 +1,5 @@
 
-// strlen, malloc, realloc, memmove, memmem, write
+// Emir
 
 #define _GNU_SOURCE
 #include <stdlib.h>
