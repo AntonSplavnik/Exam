@@ -1,17 +1,18 @@
 
-// Audrey
-
-#include "gnl.h"
+# include "get_next_line.h"
 
 char	*ft_strchr(char *s, int c)
 {
 	int i = 0;
-		while (s[i] != (char)c && s[i]) // changed
-			i++;
-		if (s[i] == (char)c)
-			return &s[i];
-		else
-			return NULL;
+	while (s[i] != (char)c && s[i]) i++;
+	if (s[i] == c) return s + i;
+	else return NULL;
+}
+
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	while (n-- > 0) ((char*)dest)[n] = ((char*)src)[n];
+	return dest;
 }
 
 size_t	ft_strlen(char *s)
@@ -25,26 +26,20 @@ size_t	ft_strlen(char *s)
 	return (ret);
 }
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
-{
-	while (n-- > 0) //changed
-		((char*)dest)[n] = ((char*)src)[n]; //changed
-	return dest;
-}
-
 int	str_append_mem(char **s1, char *s2, size_t size2)
 {
 	size_t size1;
-	if (*s1) size1 = ft_strlen(*s1); //added
+	if (*s1) size1 = ft_strlen(*s1);
 	else size1 = 0;
 	char *tmp = malloc(size2 + size1 + 1);
-	if (!tmp) return 0;
+	if (!tmp)
+		return 0;
 	ft_memcpy (tmp, *s1, size1);
-	ft_memcpy (tmp + size1, s2, size2); //added missing comma
+	ft_memcpy (tmp + size1, s2, size2);
 	tmp[size1 + size2] = 0;
 	free(*s1);
 	*s1 = tmp;
-	return (1);
+	return 1;
 }
 
 int	str_append_str(char **s1, char *s2)
@@ -54,9 +49,9 @@ int	str_append_str(char **s1, char *s2)
 
 void	*ft_memmove (void *dest, const void *src, size_t n)
 {
-	if (dest < src) return ft_memcpy(dest, src, n); //reverse comparison sign
-	else if (dest == src) return (dest);
-	while (n-- > 0) ((char *)dest)[n] = ((char *)src)[n]; //changed
+	if (dest < src) return ft_memcpy(dest, src, n);
+	else if (dest == src) return dest;
+	while (n-- > 0) ((char *)dest)[n] = ((char *)src)[n];
 	return dest;
 }
 
@@ -68,30 +63,29 @@ char	*get_next_line(int fd)
 	while (!tmp)
 	{
 		if (!str_append_str(&ret, b))
-			return (NULL);
+			return NULL;
 		int read_ret = read(fd, b, BUFFER_SIZE);
 		if (read_ret == -1)
 		{
-			free(ret);  //added
-			return (NULL);
+			free (ret);
+			return NULL;
 		}
 		b[read_ret] = 0;
-		if (read_ret == 0)  //added
+		if (read_ret == 0)
 		{
-			if (ret && *ret) //check if the pointer ret exist and if it is not empty
-				return (ret);
-			free(ret);
+			if (ret && *ret) return (ret);
+			free (ret);
 			return (NULL);
 		}
 	}
-	tmp = ft_strchr(b, '\n'); //added
+	tmp = ft_strchr(b, '\n');
 	if (!str_append_mem(&ret, b, tmp - b + 1))
 	{
 		free(ret);
 		return NULL;
 	}
-	ft_memmove(b, tmp + 1, ft_strlen(tmp + 1) + 1); //added
-	return (ret);
+	ft_memmove(b, tmp + 1, ft_strlen(tmp + 1) + 1);
+	return ret;
 }
 
 int main()
