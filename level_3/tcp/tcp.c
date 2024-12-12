@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+
 float compute_distance(float **dist_matrix, int *sol, int count)
 {
 	float total_dist = 0;
@@ -13,6 +14,7 @@ float compute_distance(float **dist_matrix, int *sol, int count)
 	}
 	return (total_dist);
 }
+
 float calculate_distance(float *p1, float *p2)
 {
 	float distance;
@@ -21,6 +23,7 @@ float calculate_distance(float *p1, float *p2)
 	distance = sqrtf((p1[0] - p2[0])*(p1[0] - p2[0]) + (p1[1] - p2[1])*(p1[1] - p2[1]));
 	return (distance);
 }
+
 float	solve_tsp(float **dist_matrix, int *sol, int start, int count, float min_dist)
 {
 	/* STEP 1:
@@ -53,6 +56,7 @@ swap back*/
 		}
 	}
 }
+
 int	main(void)
 {
 	float x, y;

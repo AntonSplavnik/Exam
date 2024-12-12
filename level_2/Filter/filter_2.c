@@ -7,17 +7,15 @@
 #include <stdio.h>
 #include <string.h>
 
-int main (int ac, char **av)
+int main(int ac, char **av)
 {
 	if (ac != 2) return 1;
 	char *needle = av[1];
 	size_t needle_len = strlen(needle);
 	if (needle_len == 0) return 1;
-
 	char *input_buf = NULL;
 	size_t total = 0;
 	char tmp_buf[4096];
-
 	ssize_t bytes_read;
 	while ((bytes_read = read(STDIN_FILENO, tmp_buf, sizeof(tmp_buf))) > 0)
 	{

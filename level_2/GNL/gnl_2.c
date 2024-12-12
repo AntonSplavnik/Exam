@@ -1,22 +1,17 @@
 
+// Audrey
+
 #include "gnl.h"
 
 char	*ft_strchr(char *s, int c)
 {
 	int i = 0;
-		while (s[i] != (char)c && s[i])
+		while (s[i] != (char)c && s[i]) // changed
 			i++;
 		if (s[i] == (char)c)
 			return &s[i];
 		else
 			return NULL;
-}
-
-void	*ft_memcpy(void *dest, const void *src, size_t n)
-{
-	while (n-- > 0) //changed
-		((char*)dest)[n] = ((char*)src)[n]; //changed
-	return dest;
 }
 
 size_t	ft_strlen(char *s)
@@ -28,6 +23,13 @@ size_t	ft_strlen(char *s)
 			ret++;
 		}
 	return (ret);
+}
+
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	while (n-- > 0) //changed
+		((char*)dest)[n] = ((char*)src)[n]; //changed
+	return dest;
 }
 
 int	str_append_mem(char **s1, char *s2, size_t size2)
@@ -46,53 +48,6 @@ int	str_append_mem(char **s1, char *s2, size_t size2)
 	free(*s1);
 	*s1 = tmp;
 	return (1);
-}
-
-char	*ft_strchr(char *s, int c)
-{
-	int i = 0;
-		while (s[i] != (char)c && s[i])
-			i++;
-		if (s[i] == (char)c)
-			return &s[i];
-		else
-			return NULL;
-}
-
-void	*ft_memcpy(void *dest, const void *src, size_t n)
-{
-	while (n-- > 0) //changed
-		((char*)dest)[n] = ((char*)src)[n]; //changed
-	return dest;
-}
-
-size_t	ft_strlen(char *s)
-{
-	size_t ret = 0;
-		while (*s)
-		{
-			s++;
-			ret++;
-		}
-	return (ret);
-}
-
-int	str_append_mem(char **s1, char *s2, size_t size2)
-{
-	size_t size1;
-	if (*s1) //added
-		size1 = ft_strlen(*s1);
-	else
-		size1 = 0;
-	char *tmp = malloc(size2 + size1 + 1);
-	if (!tmp)
-		return 0;
-	ft_memcpy (tmp, *s1, size1);
-	ft_memcpy (tmp + size1, s2, size2); //added missing comma
-	tmp[size1 + size2] = 0;
-	free(*s1);
-	*s1 = tmp;
-	return 1;
 }
 
 int	str_append_str(char **s1, char *s2)

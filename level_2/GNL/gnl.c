@@ -1,5 +1,8 @@
 
+// Emir
+
 #include "gnl.h"
+
 /* this version can also be used, a bit more readable
 char    *ft_strchr(const char *s, int c) // changed
 {
@@ -65,7 +68,7 @@ int str_append_str(char **s1, char *s2)
 
 void    *ft_memmove (void *dest, const void *src, size_t n)
 {
-    if (dest > src)  // reverse the comparison sign
+    if (dest < src)  // reverse the comparison sign
         return ft_memcpy(dest, src, n);
     else if (dest == src)
         return dest;
