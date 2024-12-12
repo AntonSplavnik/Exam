@@ -9,11 +9,9 @@
 
 int main(int ac, char **av)
 {
-	if (ac != 2)
-		return 1;
+	if (ac != 2) return 1;
 	char *needle = av[1];
-	if (needle[0] == '\0')
-		return 1;
+	if (needle[0] == '\0') return 1;
 	size_t needle_len = strlen(av[1]);
 	char *input_buf = NULL;
 	size_t total_size = 0;
@@ -40,8 +38,7 @@ int main(int ac, char **av)
 	size_t remaining_bytes = total_size;
 	while ((current_pos = memmem(current_pos, remaining_bytes, needle, needle_len)) != NULL)
 	{
-		for (int i = 0; i < needle_len; i++)
-			current_pos[i] = '*';
+		for (int i = 0; i < needle_len; i++) current_pos[i] = '*';
 		size_t bytes_processed = (current_pos - input_buf) + needle_len;
 		remaining_bytes = total_size - bytes_processed;
 		current_pos = input_buf + bytes_processed;
