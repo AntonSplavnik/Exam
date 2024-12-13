@@ -1,10 +1,11 @@
-Assignment subject is below.
-Misleading indententation and all errors are to be corrected by the student.
-I came up with a solution with the fewest changes to keep it very simple.
-In the solved code above, I added `// comments` to points the code that was changed.
-Of course, you could also erase the whole corrupted code and bring your own GNL implementation.
+/**
+ * Assignment subject is below.
+ * Misleading indententation and all errors are to be corrected by the student.
+ * I came up with a solution with the fewest changes to keep it very simple.
+ * In the solved code above, I added `// comments` to points the code that was changed.
+ * Of course, you could also erase the whole corrupted code and bring your own GNL implementation.
+*/
 
-//get_next_line.c :
 # include "get_next_line.h"
 
 char	*ft_strchr(char *s, int c)
@@ -91,4 +92,3 @@ char	*get_next_line(int fd)
 	}
 	return ret;
 }
-*/
