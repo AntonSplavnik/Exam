@@ -6,9 +6,7 @@
 int ft_strlen(char *s)
 {
 	int i = 0;
-
-	while (s[i])
-		i++;
+	while (s[i]) i++;
 	return i;
 }
 void swap(char *a, char *b)
@@ -21,7 +19,7 @@ void swap(char *a, char *b)
 
 void bubble_sort(char *s, int len)
 {
-	for (int i = 0; i < len -1; i++)
+	for (int i = 0; i < len - 1; i++)
 	{
 		for (int j = 0; j < len - 1; j++)
 		{
@@ -46,12 +44,9 @@ int next_perm(char *s, int len)
 	int i = len - 2;
 	int j = len - 1;
 
-	while (i >= 0 && s[i] >= s[i + 1])
-		i--;
-	if (i < 0)
-		return 0;
-	while (s[j] <= s[i])
-		j--;
+	while (i >= 0 && s[i] >= s[i + 1]) i--;
+	if (i < 0) return 0;
+	while (s[j] <= s[i]) j--;
 	swap(&s[i], &s[j]);
 	reverse(s, i + 1, len - 1);
 	return 1;
@@ -60,10 +55,11 @@ int next_perm(char *s, int len)
 int main(int ac, char **av)
 {
 	if (ac != 2) return 1;
+
 	int len = ft_strlen(av[1]);
 	if (len == 0) return 1;
 
-	char *buf = malloc(len + 1);
+	char *buf = malloc((len + 1) * sizeof(char));
 	if (!buf) return 1;
 
 	for (int i = 0; i < len; i++)
