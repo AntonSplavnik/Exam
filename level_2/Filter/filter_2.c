@@ -26,7 +26,7 @@ int main(int ac, char **av)
 		char *new_buf = realloc(input_buf, total + bytes_read);
 		if (!new_buf)
 		{
-			fprintf(stderr, "Error");
+			fprintf(stderr, "Error: ");
 			free(input_buf);
 			return 1;
 		}
@@ -36,7 +36,7 @@ int main(int ac, char **av)
 	}
 	if (bytes_read < 0)
 	{
-		fprintf(stderr, "Error");
+		fprintf(stderr, "Error: ");
 		free(input_buf);
 		return 1;
 	}
@@ -54,7 +54,7 @@ int main(int ac, char **av)
 	ssize_t written = write(STDOUT_FILENO, input_buf, total);
 	if (written < 0)
 	{
-		fprintf(stderr, "Error");
+		fprintf(stderr, "Error: ");
 		free(input_buf);
 		return 1;
 	}
